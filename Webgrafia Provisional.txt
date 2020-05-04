@@ -1,0 +1,9 @@
+• Instal·lacions
+
+-https://laravel.com/docs/7.x/installationç
+
+
+• Solució de problemes
+
+-https://github.com/desktop/desktop/issues/3036
+
