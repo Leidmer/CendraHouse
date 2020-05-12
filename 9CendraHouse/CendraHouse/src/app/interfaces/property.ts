@@ -8,5 +8,5 @@ export interface Property{
     n_baths: number;
     property_type: string;
     created_at?: string;
-    update_at?: string;
+    updated_at?: string;
 }
