@@ -38,7 +38,16 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $property = new Property();
+        $property->name = $request->input('name');
+        $property->description = $request->input('description');
+        $property->location = $request->input('location');
+        $property->postal_code = $request->input('postal_code');
+        $property->n_rooms = $request->input('n_rooms');
+        $property->n_baths = $request->input('n_baths');
+        $property->property_type = $request->input('property_type');
+        $property->save();
+        echo json_encode($property);
     }
 
     /**
@@ -65,7 +74,7 @@ class PropertyController extends Controller
         //
     }
     */
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -76,7 +85,7 @@ class PropertyController extends Controller
      */
     public function update(Request $request, Property $property)
     {
-        //
+        echo 'Hello from update';
     }
 
     /**
@@ -87,6 +96,6 @@ class PropertyController extends Controller
      */
     public function destroy(Property $property)
     {
-        //
+        echo 'hello from destroy';
     }
 }
