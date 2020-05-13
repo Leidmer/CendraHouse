@@ -14,18 +14,21 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
+    echo 'hello';
     }
 
     /**
      * Show the form for creating a new resource.
+     * Comentat ja que no es fará servir, això és una API
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    /**public function create()
     {
         //
     }
+    */
+
 
     /**
      * Store a newly created resource in storage.
@@ -44,10 +47,12 @@ class PropertyController extends Controller
      * @param  \App\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function show(Property $property)
+    /**public function show(Property $property)
     {
         //
     }
+    */
+
 
     /**
      * Show the form for editing the specified resource.
@@ -55,10 +60,12 @@ class PropertyController extends Controller
      * @param  \App\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function edit(Property $property)
+    /**public function edit(Property $property)
     {
         //
     }
+    */
+    
 
     /**
      * Update the specified resource in storage.
