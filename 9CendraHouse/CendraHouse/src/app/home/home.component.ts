@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PropertiesService } from '../services/properties.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +9,13 @@ import {HttpClientModule} from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   API_ENDPOINT = 'http://localhost:8000/api';
-  constructor(private propertyService: PropertiesService, private httpClient: HttpClientModule) { }
+  constructor(private propertyService: PropertiesService, private httpClient: HttpClient) { 
+    httpClient.get(this.API_ENDPOINT + '/properties').subscribe( (data) => {
+      console.log(data);
+    });
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
 }
