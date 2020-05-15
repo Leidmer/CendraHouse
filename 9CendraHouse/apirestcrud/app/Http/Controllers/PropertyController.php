@@ -81,12 +81,12 @@ class PropertyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Property  $property
+     * @param  \App\Property  $property_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Property $property)
+    public function update(Request $request, $property_id)
     {
-        $property = new Property();
+        $property = Property::find($property_id);
         $property->name = $request->input('name');
         $property->description = $request->input('description');
         $property->location = $request->input('location');
@@ -101,11 +101,12 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Property  $property
+     * @param  \App\Property  $property_id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Property $property)
+    public function destroy($property_id)
     {
-        echo 'hello from destroy';
+        $property = Property::find($property_id);
+        $property->delete();
     }
 }
