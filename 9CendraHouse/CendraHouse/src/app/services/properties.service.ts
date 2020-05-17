@@ -15,4 +15,11 @@ export class PropertiesService {
     const headers = new HttpHeaders({'Content-Type':'application/json'});
     return this.httpClient.post(this.API_ENDPOINT + '/properties', property, {headers: headers});
   }
+  put(property) {
+    const headers = new HttpHeaders({'Content-Type':'application/json'});
+    return this.httpClient.put(this.API_ENDPOINT + '/properties/' + property.id, property, {headers: headers});
+  }
+  delete(id) {
+    return this.httpClient.delete(this.API_ENDPOINT + '/properties/' + id);
+  }
 }
