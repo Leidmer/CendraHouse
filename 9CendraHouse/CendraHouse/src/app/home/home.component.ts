@@ -12,8 +12,11 @@ export class HomeComponent implements OnInit {
   API_ENDPOINT = 'http://localhost:8000/api';
   properties : Property[];
   constructor(private propertyService: PropertiesService, private httpClient: HttpClient) { 
-    httpClient.get(this.API_ENDPOINT + '/properties').subscribe( (data:Property[] ) => {
-    this.properties = data;
+    this.propertyService.get().subscribe( (data: Property[]) => {
+      this.properties = data;
+    }, (error) => {
+      console.log(error);
+      alert('Hi ha un error');
     });
   }
 

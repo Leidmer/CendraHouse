@@ -1,32 +1,33 @@
-    <form>
+    <h2>Crea Propietat</h2>
+    <div>
       <div class="form-group">
         <label for="name">Nom</label>
-        <input type="text" class="form-control" id="name" placeholder="Introdueix el nom">
+        <input [(ngModel)]="property.name" type="text" class="form-control" id="name" placeholder="Introdueix el nom">
       </div>
       <div class="form-group">
         <label for="description">Descripció</label>
-        <textarea class="form-control" id="description" placeholder="Introdueix una descripció"></textarea>
+        <textarea [(ngModel)]="property.description" class="form-control" id="description" placeholder="Introdueix una descripció"></textarea>
       </div>
       <div class="form-group">
         <label for="name">Localització</label>
-        <input type="text" class="form-control" id="location" placeholder="Introdueix la localització">
+        <input [(ngModel)]="property.location" type="text" class="form-control" id="location" placeholder="Introdueix la localització">
       </div>
       <div class="form-group">
         <label for="name">Codi Postal</label>
-        <input type="text" class="form-control" id="postal_code" placeholder="Introdueix el Codi Postal">
+        <input [(ngModel)]="property.postal_code" type="text" class="form-control" id="postal_code" placeholder="Introdueix el Codi Postal">
       </div>
       <div class="form-group">
         <label for="name">Número d'habitacions</label>
-        <input type="text" class="form-control" id="n_rooms" placeholder="Introdueix el número d'habitacions">
+        <input [(ngModel)]="property.n_rooms" type="text" class="form-control" id="n_rooms" placeholder="Introdueix el número d'habitacions">
       </div>
       <div class="form-group">
         <label for="name">Númreo de banys</label>
-        <input type="text" class="form-control" id="n_baths" placeholder="Introdueix el número de banys">
+        <input [(ngModel)]="property.n_baths" type="text" class="form-control" id="n_baths" placeholder="Introdueix el número de banys">
       </div>
       <div class="form-group">
         <label for="name">Tipus de propietat</label>
-        <input type="text" class="form-control" id="property_type" placeholder="Introdueix el tipus de propietat">
+        <input [(ngModel)]="property.property_type" type="text" class="form-control" id="property_type" placeholder="Introdueix el tipus de propietat">
       </div>
       
-      <button type="submit" class="btn btn-primary">Envia</button>
-    </form>
+      <button (click)="saveProperty()" class="btn btn-primary">Crea</button>
+    </div>
