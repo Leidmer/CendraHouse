@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 //Route d'autenticació
 
-Route::get('/login', 'ConnectController@getLogin');
+Route::get('/login', 'ConnectController@getLogin')->name('login');
+Route::get('/register', 'ConnectController@getRegister')->name('register');
+Route::post('/register', 'ConnectController@postRegister')->name('register');
