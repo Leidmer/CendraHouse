@@ -8,6 +8,10 @@ use App\User;
 
 class ConnectController extends Controller
 {
+    public function __construct(){
+        $this->middleware('guest')->except(['getLogout']);
+    }
+
     public function getLogin(){
         return view('connect.login');
     }
@@ -78,5 +82,10 @@ class ConnectController extends Controller
                 return redirect('/login')->with('message', 'L´usuari s´ha creat correctament')->with('typealert', 'success');
             endif;
         endif;
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect('/');
     }
 }
