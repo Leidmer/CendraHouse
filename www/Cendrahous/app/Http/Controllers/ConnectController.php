@@ -24,11 +24,13 @@ class ConnectController extends Controller
         ];
         $validator = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()):
-            return back()->withErrors($validator)->with('message', 'S´ha produit un error')->with('typealert', 'danger');
+            return back()->withErrors($validator)->with('message', 'Correu electrònic o contrasenya erronis')->with('typealert', 'danger');
         else:
 
-            if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])):
+            if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], true)):
+                return redirect('/');
             else:
+                return back()->with('message', 'Correu electrònic o contrasenya erronis')->with('typealert', 'danger');
             endif;
 
         endif;
