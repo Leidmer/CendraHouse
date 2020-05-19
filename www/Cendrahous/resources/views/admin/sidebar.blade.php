@@ -25,6 +25,9 @@
                 <a href="{{ url('/admin/properties') }}"><i class="fas fa-building"></i> Propietats</a>
             </li>
             <li>
+                <a href="{{ url('/admin/types') }}"><i class="far fa-folder-open"></i> Tipus de propietats</a>
+            </li>
+            <li>
                 <a href="{{ url('/admin/users') }}"><i class="fas fa-user-friends"></i> Usuaris</a>
             </li>
         </ul>

@@ -7,4 +7,7 @@ Route::prefix('/admin')->group(function(){
     // Modul Propietats
     Route::get('/properties', 'Admin\PropertyController@getHome');
     Route::get('/property/add', 'Admin\PropertyController@getPropertyAdd');
+
+    // Tipus de propietats (categories)
+    Route::get('/types', 'Admin\TypesController@getHome');
 });
