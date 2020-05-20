@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Models\Type;
+
 class PropertyController extends Controller
 {
     public function __Construct(){
@@ -18,6 +20,8 @@ class PropertyController extends Controller
     }
 
     public function getPropertyAdd(){
-        return view('admin.properties.add');
+        $cats = Type::where('module', '0')->pluck('name', 'id');
+        $data = ['cats' => $cats];
+        return view('admin.properties.add', $data);
     }
 }
