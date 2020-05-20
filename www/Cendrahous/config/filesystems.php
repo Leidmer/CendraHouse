@@ -54,6 +54,10 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'uploads' => [
+            'driver' => 'local',
+            'root' => 'C:/Users/Sethei/Desktop/CendraHouse/www/Cendrahous/public/uploads'
+        ],
 
         's3' => [
             'driver' => 's3',

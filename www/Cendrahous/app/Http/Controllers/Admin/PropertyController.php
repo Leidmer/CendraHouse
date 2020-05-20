@@ -9,7 +9,7 @@ use App\Http\Models\Type, App\Http\Models\Property;
 
 
 
-use Validator, Str;
+use Validator, Str, Config;
 
 class PropertyController extends Controller
 {
@@ -53,6 +53,15 @@ class PropertyController extends Controller
         if($validator->fails()):
             return back()->withErrors($validator)->with('message', 'S´ha produit un error')->with('typealert', 'danger')->withInput();
         else:
+            $path = '/'.date('Y-m-d'); // 2020-05-20 Per exemple
+            $fileExt = trim($request->file('img')->getClientOriginalExtension());
+            $upload_path = Config::get('filesystems.disk.upload.root');
+            //Amb slug eliminem els espais i caracters especials del nom de l'arxiu
+            $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
+            //amb aquesta linia fem que si pujo un altre arxiu amb el mateix nom no el substitueix ja que li posa un nom aleatori, com a més es guarda en una carpeta diferent
+            //per cada dia hi han menys probabilitats de que falli
+            $filename = rand(1,999).'-'.$name.'.'.$fileExt;
+
             $property = new Property;
             //Si la propietat està posada en 0 és un borrador i si es 1 està publicada
             $property->status = '0';
@@ -61,12 +70,17 @@ class PropertyController extends Controller
             $property->n_rooms = $request->input('n_rooms');
             $property->n_baths = $request->input('n_baths');
             $property->type_id = $request->input('type');
-            $property->image = "image.png";
+            $property->image = $filename;
             $property->price = $request->input('price');
             $property->in_discount = $request->input('indiscount');
             $property->discount = $request->input('discount');
             $property->content = e($request->input('content'));
+            //Guardem la imatge
             if($property->save()):
+                if($request->hasFile('img')):
+                    //Uploads està creat a filesystems.php
+                    $fl = $request->img->storeAs($path, $filename, 'uploads');
+                endif;
                 return redirect('/admin/properties')->with('message', 'S´ha guardat correctament')->with('typealert', 'success');
             endif;
         endif;

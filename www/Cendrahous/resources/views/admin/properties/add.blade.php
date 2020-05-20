@@ -19,7 +19,7 @@
         </div>
 
         <div class="inside">
-            {!! Form::open(['url' => '/admin/property/add']) !!}
+            {!! Form::open(['url' => '/admin/property/add', 'files' => true]) !!}
             <!--Primera Fila-->
             <div class="row">
 
@@ -74,7 +74,8 @@
                 <div class="col-md-3">
                     <label for="img">Imatge destacada:</label>
                     <div class="custom-file">
-                        {!! Form::file('img', ['class' => 'custom-file-input', 'id' => 'customFile']) !!}
+                        <!---La part de accept fa que només accepti imatges tot i que ho fa a la part client-->
+                        {!! Form::file('img', ['class' => 'custom-file-input', 'id' => 'customFile', 'accept'=> 'image/*']) !!}
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                 </div>
