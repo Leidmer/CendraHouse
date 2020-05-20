@@ -70,6 +70,7 @@ class PropertyController extends Controller
             $property->n_rooms = $request->input('n_rooms');
             $property->n_baths = $request->input('n_baths');
             $property->type_id = $request->input('type');
+            $property->file_path = date('Y-m-d');
             $property->image = $filename;
             $property->price = $request->input('price');
             $property->in_discount = $request->input('indiscount');
