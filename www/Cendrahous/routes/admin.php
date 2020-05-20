@@ -10,4 +10,5 @@ Route::prefix('/admin')->group(function(){
 
     // Tipus de propietats (categories)
     Route::get('/types', 'Admin\TypesController@getHome');
+    Route::post('/type/add', 'Admin\TypesController@postTypeAdd');
 });
