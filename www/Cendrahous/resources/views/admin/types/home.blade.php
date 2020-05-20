@@ -54,6 +54,50 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-9">
+            <div class="panel shadow">
+                <div class="header">
+                    <h2 class="title"><i class="far fa-folder-open"></i> Tipus de propietats</h2>
+                </div>
+        
+                <div class="inside">
+                    <nav class="nav nav-pills nav-fill">
+                        @foreach(getModulesArray() as $m => $k)
+                        <a class="nav-link" href="{{ url('/admin/types/'.$m) }}"><i class="fas fa-list"></i> {{ $k }}</a>
+                        @endforeach
+                    </nav>
+                    <table class="table mtop16">
+                        <thead>
+                            <tr>
+                                <td width="32px"></td>
+                                <td>Nom</td>
+                                <td width="140px"></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($cats as $cat)
+                            <tr>
+                                <!--Aquesta part la fem amb Laravel Collective perque mostri la icona correctament-->
+                                <td>{!! htmlspecialchars_decode($cat->icona) !!}</td>
+                                <td>{{ $cat->name }}</td>
+                                <td>
+                                    <div class="opts">
+                                        <a href="{{ url('/admin/type/'.$cat->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ url('/admin/type/'.$cat->id.'/delete') }}" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

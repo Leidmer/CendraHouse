@@ -16,8 +16,10 @@ class TypesController extends Controller
         $this->middleware('isadmin');
     }
 
-    public function getHome(){
-        return view('admin.types.home');
+    public function getHome($module){
+        $cats = Type::where('module', $module)->orderBy('name', 'Asc')->get();
+        $data = ['cats' => $cats];
+        return view('admin.types.home', $data);
     }
 
     public function postTypeAdd(Request $request){
