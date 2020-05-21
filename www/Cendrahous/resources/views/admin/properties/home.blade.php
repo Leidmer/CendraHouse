@@ -42,8 +42,8 @@
                     <tr>
                         <td width="50">{{ $p->id }}</td>
                         <td width="64">
-                            <a href="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}">
-                                <img src="{{ url('/uploads/'.$p->file_path.'/t_'.$p->image) }}" width="64">
+                            <a href="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}" data-fancybox="gallery">
+                                <img src="{{ url('/uploads/'.$p->file_path.'/t_'.$p->image) }}" width="64" >
                             </a>
                         </td>
                         <td>{{ $p->name }}</td>

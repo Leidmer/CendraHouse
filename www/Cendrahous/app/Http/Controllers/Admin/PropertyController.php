@@ -96,4 +96,11 @@ class PropertyController extends Controller
             endif;
         endif;
     }
+
+    public function getPropertyEdit($id){
+        $p = Property::find($id);
+        $cats = Type::where('module', '0')->pluck('name', 'id');
+        $data = ['cats' => $cats, 'p' => $p];
+        return view('admin.properties.edit', $data);
+    }
 }
