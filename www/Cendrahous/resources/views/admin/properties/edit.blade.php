@@ -170,8 +170,8 @@
                     <h2 class="title"><i class="far fa-images"></i> Galeria</h2>
                 </div>
                 <div class="inside property_gallery">
-                    {!! Form::open(['url' => '/admin/property/'.$p->id.'gallery/add', 'files' => true]) !!}
-                    {!! Form::file('file_image', ['id' => 'property_file_image', 'accept' => 'image/*', 'style' => 'display: none']) !!}
+                    {!! Form::open(['url' => '/admin/property/'.$p->id.'gallery/add', 'files' => true, 'id' => 'form_property_gallery']) !!}
+                    {!! Form::file('file_image', ['id' => 'property_file_image', 'accept' => 'image/*', 'style' => 'display: none;', 'required']) !!}
                     {!! Form::close() !!}
 
                     <div class="thumb">

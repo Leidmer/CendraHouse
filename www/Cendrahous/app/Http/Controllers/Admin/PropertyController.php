@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Http\Models\Type, App\Http\Models\Property;
+use App\Http\Models\Type, App\Http\Models\Property, App\Http\Models\PGallery;
 
 
 
@@ -163,6 +163,52 @@ class PropertyController extends Controller
                     $img->save($upload_path.'/'.$path.'/t_'.$filename);
                 endif;
                 return back()->with('message', 'S´ha actualitzat correctament')->with('typealert', 'success');
+            endif;
+        endif;
+    }
+
+    public function postPropertyGalleryAdd($id, Request $request){
+        $rules = [
+            'file_image' => 'required'
+        ];
+
+        $messages = [
+            'file_image.required' => 'La imatge és obligatòria'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message', 'S´ha produit un error')->with('typealert', 'danger')->withInput();
+        else:
+            if($request->hasFile('file_image')):
+                $path = '/'.date('Y-m-d'); 
+                $fileExt = trim($request->file('file_image')->getClientOriginalExtension());
+                $upload_path = Config::get('filesystems.disks.uploads.root');
+                $name = Str::slug(str_replace($fileExt, '', $request->file('file_image')->getClientOriginalName()));
+
+                $filename = rand(1,999).'-'.$name.'.'.$fileExt;
+                $file_file = $upload_path.'/'.$path.'/'.$filename;
+
+                $g = new PGallery;
+                $g->property_id =$id;
+                $g->file_path = date('Y-m-d');
+                $g->file_name = $filename;
+
+                if($g->save()):
+                    if($request->hasFile('file_image')):
+                        //Uploads està creat a filesystems.php
+                        $fl = $request->file_image->storeAs($path, $filename, 'uploads');
+                        $img = Image::make($file_file);
+                        //Part per si s'ha de modificar la mida
+                        $img->fit(256, 256, function($constraint){
+                            //t_ = thumbnail
+                            $constraint->upsize();
+                        });
+                        $img->save($upload_path.'/'.$path.'/t_'.$filename);
+                    endif;
+                    return back()->with('message', 'S´ha pujat correctament')->with('typealert', 'success');
+                endif;
+
             endif;
         endif;
     }

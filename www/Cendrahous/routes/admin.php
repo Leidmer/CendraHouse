@@ -10,6 +10,7 @@ Route::prefix('/admin')->group(function(){
     Route::get('/property/{id}/edit', 'Admin\PropertyController@getPropertyEdit');
     Route::post('/property/add', 'Admin\PropertyController@postPropertyAdd');
     Route::post('/property/{id}/edit', 'Admin\PropertyController@postPropertyEdit');
+    Route::post('/property/{id}/gallery/add', 'Admin\PropertyController@postPropertyGalleryAdd');
     
 
     // Tipus de propietats (categories)

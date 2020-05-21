@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function(){
     var property_file_image = document.getElementById('property_file_image');
     btn_property_file_image.addEventListener('click', function(){
         property_file_image.click();
+    }, false);
+
+    property_file_image.addEventListener('change', function(){
+        document.getElementById('form_property_gallery').submit();
     });
 });
 
