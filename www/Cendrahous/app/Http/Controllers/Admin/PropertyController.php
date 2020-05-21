@@ -98,7 +98,7 @@ class PropertyController extends Controller
     }
 
     public function getPropertyEdit($id){
-        $p = Property::find($id);
+        $p = Property::findOrFail($id);
         $cats = Type::where('module', '0')->pluck('name', 'id');
         $data = ['cats' => $cats, 'p' => $p];
         return view('admin.properties.edit', $data);
@@ -125,7 +125,7 @@ class PropertyController extends Controller
         if($validator->fails()):
             return back()->withErrors($validator)->with('message', 'S´ha produit un error')->with('typealert', 'danger')->withInput();
         else:
-            $property = Property::find($id);
+            $property = Property::findOrFail($id);
             //Si la propietat està posada en 0 és un borrador i si es 1 està publicada
             $property->status = $request->input('status');
             $property->name = e($request->input('name'));
