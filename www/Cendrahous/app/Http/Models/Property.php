@@ -12,4 +12,8 @@ class Property extends Model
     protected $dates = ['deleted_at'];
     protected $table = 'properties';
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function cat(){
+        return $this->hasOne(Type::class,'id','type_id');
+    }
 }

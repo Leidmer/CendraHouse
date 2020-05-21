@@ -20,7 +20,9 @@ class PropertyController extends Controller
     }
 
     public function getHome(){
-        return view('admin.properties.home');
+        $properties = Property::orderBy('id', 'desc')->paginate(25);
+        $data = ['properties' => $properties];
+        return view('admin.properties.home', $data);
     }
 
     public function getPropertyAdd(){
