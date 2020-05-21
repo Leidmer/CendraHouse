@@ -20,7 +20,7 @@ class PropertyController extends Controller
     }
 
     public function getHome(){
-        $properties = Property::orderBy('id', 'desc')->paginate(25);
+        $properties = Property::with(['cat'])->orderBy('id', 'desc')->paginate(25);
         $data = ['properties' => $properties];
         return view('admin.properties.home', $data);
     }
@@ -102,5 +102,68 @@ class PropertyController extends Controller
         $cats = Type::where('module', '0')->pluck('name', 'id');
         $data = ['cats' => $cats, 'p' => $p];
         return view('admin.properties.edit', $data);
+    }
+    public function postPropertyEdit($id, Request $request){
+        $rules = [
+            'name' => 'required',
+            'n_rooms' => 'required',
+            'n_baths' => 'required',
+            'price' => 'required',
+            'content' => 'required'
+        ];
+
+        $messages = [
+            'name.required' => 'El nom de la propietat és obligatori',
+            'n_rooms.required' => 'El número d´habitacions és obligatori',
+            'n_baths.required' => 'El número de banys és obligatori',
+            'img.image' => 'L´arxiu no és una imatge',
+            'price.required' => 'El preu és obligatori',
+            'content.required' => 'La descripció és obligatòria'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message', 'S´ha produit un error')->with('typealert', 'danger')->withInput();
+        else:
+            $property = Property::find($id);
+            //Si la propietat està posada en 0 és un borrador i si es 1 està publicada
+            $property->status = $request->input('status');
+            $property->name = e($request->input('name'));
+            $property->n_rooms = $request->input('n_rooms');
+            $property->n_baths = $request->input('n_baths');
+            $property->type_id = $request->input('type');
+            if($request->hasFile('img')):
+                $path = '/'.date('Y-m-d'); // 2020-05-20 Per exemple
+                $fileExt = trim($request->file('img')->getClientOriginalExtension());
+                $upload_path = Config::get('filesystems.disks.uploads.root');
+                //Amb slug eliminem els espais i caracters especials del nom de l'arxiu
+                $name = Str::slug(str_replace($fileExt, '', $request->file('img')->getClientOriginalName()));
+                //amb aquesta linia fem que si pujo un altre arxiu amb el mateix nom no el substitueix ja que li posa un nom aleatori, com a més es guarda en una carpeta diferent
+                //per cada dia hi han menys probabilitats de que falli
+                $filename = rand(1,999).'-'.$name.'.'.$fileExt;
+                $file_file = $upload_path.'/'.$path.'/'.$filename;
+                $property->file_path = date('Y-m-d');
+                $property->image = $filename;
+            endif;
+            $property->price = $request->input('price');
+            $property->in_discount = $request->input('indiscount');
+            $property->discount = $request->input('discount');
+            $property->content = e($request->input('content'));
+            //Guardem la imatge
+            if($property->save()):
+                if($request->hasFile('img')):
+                    //Uploads està creat a filesystems.php
+                    $fl = $request->img->storeAs($path, $filename, 'uploads');
+                    $img = Image::make($file_file);
+                    //Part per si s'ha de modificar la mida
+                    $img->fit(256, 256, function($constraint){
+                        //t_ = thumbnail
+                        $constraint->upsize();
+                    });
+                    $img->save($upload_path.'/'.$path.'/t_'.$filename);
+                endif;
+                return back()->with('message', 'S´ha actualitzat correctament')->with('typealert', 'success');
+            endif;
+        endif;
     }
 }

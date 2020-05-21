@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="inside">
-                    {!! Form::open(['url' => '/admin/property/add', 'files' => true]) !!}
+                    {!! Form::open(['url' => '/admin/property/'.$p->id.'/edit', 'files' => true]) !!}
                     <!--Primera Fila-->
                     <div class="row">
 
@@ -121,6 +121,19 @@
                             </div>
                             
                     </div>
+
+                    <div class="col-md-3">
+                        <label for="indiscount">Estat:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="far fa-keyboard"></i>
+                                </span>
+                            </div>
+                            {!! Form::select('status', ['0' => 'Borrador', '1' => 'Public'], $p->status, ['class' => 'custom-select']) !!}
+                        </div>
+                        
+                </div>
                     </div>
 
                     <!--Tercera Fila-->
