@@ -16,6 +16,7 @@
         </div>
     </div>
 
+    <!--Cada vegada que afageixi una nova ruta hauria de venir aquí per afegir-la a la opció del menu, si no no sortirà marcada una vegada dins-->
     <div class="main">
         <ul>
             <li>
@@ -28,7 +29,7 @@
                 <a href="{{ url('/admin/types/0') }}" class="lk-types lk-type_add lk-type_edit lk-type_delete"><i class="far fa-folder-open"></i> Tipus de propietats</a>
             </li>
             <li>
-                <a href="{{ url('/admin/users') }}" class="lk-user_list"><i class="fas fa-user-friends"></i> Usuaris</a>
+                <a href="{{ url('/admin/users') }}" class="lk-user_list lk-user_edit"><i class="fas fa-user-friends"></i> Usuaris</a>
             </li>
         </ul>
     </div>
