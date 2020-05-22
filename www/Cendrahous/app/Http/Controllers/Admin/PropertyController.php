@@ -20,6 +20,7 @@ class PropertyController extends Controller
     }
 
     public function getHome(){
+        //Si canviem el numero de paginate podem mostrar que hi ha paginació
         $properties = Property::with(['cat'])->orderBy('id', 'desc')->paginate(25);
         $data = ['properties' => $properties];
         return view('admin.properties.home', $data);
@@ -126,6 +127,9 @@ class PropertyController extends Controller
             return back()->withErrors($validator)->with('message', 'S´ha produit un error')->with('typealert', 'danger')->withInput();
         else:
             $property = Property::findOrFail($id);
+            //ipp image preview path
+            $ipp = $property->file_path;
+            $ip = $property->image;
             //Si la propietat està posada en 0 és un borrador i si es 1 està publicada
             $property->status = $request->input('status');
             $property->name = e($request->input('name'));
@@ -161,6 +165,8 @@ class PropertyController extends Controller
                         $constraint->upsize();
                     });
                     $img->save($upload_path.'/'.$path.'/t_'.$filename);
+                    unlink($upload_path.'/'.$ipp.'/'.$ip);
+                    unlink($upload_path.'/'.$ipp.'/t_'.$ip);
                 endif;
                 return back()->with('message', 'S´ha actualitzat correctament')->with('typealert', 'success');
             endif;
