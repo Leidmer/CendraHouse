@@ -23,10 +23,10 @@
                             <i class="fas fa-filter"></i> Filtrar
                           </button>
                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#"><i class="fas fa-stream"></i> Tots</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-unlink"></i> No confirmats</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-user-check"></i> Confirmats</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-heart-broken"></i> Suspesos</a>
+                            <a class="dropdown-item" href="{{ url('/admin/users/all') }}"><i class="fas fa-stream"></i> Tots</a>
+                            <a class="dropdown-item" href="{{ url('/admin/users/0') }}"><i class="fas fa-unlink"></i> No confirmats</a>
+                            <a class="dropdown-item" href="{{ url('/admin/users/1') }}"><i class="fas fa-user-check"></i> Confirmats</a>
+                            <a class="dropdown-item" href="{{ url('/admin/users/100') }}"><i class="fas fa-heart-broken"></i> Suspesos</a>
                           </div>
                     </div>
                 </div>
@@ -38,6 +38,8 @@
                         <td>Nom</td>
                         <td>Cogom</td>
                         <td>Email</td>
+                        <td>Rol</td>
+                        <td>Estat</td>
                         <td></td>
                     </tr>
                 </thead>
@@ -48,6 +50,8 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->lastname }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ getRoleUserArrayKey($user->role) }}</td>
+                        <td>{{ getUserStatusArrayKey($user->status) }}</td>
                         <td>
                             <div class="opts">
                                 <a href="{{ url('/admin/user/'.$user->id.'/edit') }}" data-toggle="tooltip" data-placement="top" title="Editar">
@@ -57,6 +61,9 @@
                         </td>
                     </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="7">{!! $users->render() !!}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>

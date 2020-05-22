@@ -29,7 +29,7 @@
                 <a href="{{ url('/admin/types/0') }}" class="lk-types lk-type_add lk-type_edit lk-type_delete"><i class="far fa-folder-open"></i> Tipus de propietats</a>
             </li>
             <li>
-                <a href="{{ url('/admin/users') }}" class="lk-user_list lk-user_edit"><i class="fas fa-user-friends"></i> Usuaris</a>
+                <a href="{{ url('/admin/users/all') }}" class="lk-user_list lk-user_edit"><i class="fas fa-user-friends"></i> Usuaris</a>
             </li>
         </ul>
     </div>
