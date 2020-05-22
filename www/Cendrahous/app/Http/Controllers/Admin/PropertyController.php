@@ -190,7 +190,7 @@ class PropertyController extends Controller
                 $file_file = $upload_path.'/'.$path.'/'.$filename;
 
                 $g = new PGallery;
-                $g->property_id =$id;
+                $g->property_id = $id;
                 $g->file_path = date('Y-m-d');
                 $g->file_name = $filename;
 
