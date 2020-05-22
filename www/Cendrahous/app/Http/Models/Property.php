@@ -16,4 +16,8 @@ class Property extends Model
     public function cat(){
         return $this->hasOne(Type::class,'id','type_id');
     }
+
+    public function getGallery(){
+        return $this->hasMany(PGallery::class,'property_id','id');
+    }
 }

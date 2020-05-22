@@ -212,4 +212,20 @@ class PropertyController extends Controller
             endif;
         endif;
     }
+
+    function getPropertyGalleryDelete($id, $gid){
+        $g = PGallery::findOrFail($gid);
+        $path = $g->file_path;
+        $file = $g->file_name;
+        $upload_path = Config::get('filesystems.disks.uploads.root');
+        if($g->property_id != $id){
+            return back()->with('message', 'Aquesta imatge no es pot eliminar')->with('typealert', 'danger');
+        }else{
+            if($g->delete()):
+                unlink($upload_path.'/'.$path.'/'.$file);
+                unlink($upload_path.'/'.$path.'/t_'.$file);
+                return back()->with('message', 'S´ha eliminat correctament')->with('typealert', 'success');
+            endif;
+        }
+    }
 }

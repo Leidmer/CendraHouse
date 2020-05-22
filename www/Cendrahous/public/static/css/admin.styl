@@ -102,20 +102,40 @@ h2,h3,h4,h5,ul,body,html
 
 .property_gallery
     overflow hidden
-    .thumb
-        float left
+    .btn-submit
         display block
         margin-right 1%
-        width 49%
+        width 100%
         a
             border 1px dashed #6666 !important
             border-radius 4px
             color #5068A9
             display block
-            font-size 2em
+            font-size 1.5em
             text-align center
-            padding 60px 0px
+            padding 12px
             width 100%
             &:hover
                 background-color #B6E4FC
                 color #FFF
+    .thumbs
+        overflow hidden
+        .thumb
+            float left
+            position relative
+            margin-bottom 16px
+            width 40%
+            a
+                background-color rgba(0,0,0, .5)
+                display inline-block
+                color  #ffffff
+                padding 6px
+                border-radius 4px
+                position absolute
+                bottom 8px
+                right 25px
+            img
+                width 85%
+                border-radius 4px
+            &:nth-child(odd)
+                margin-right: 1%

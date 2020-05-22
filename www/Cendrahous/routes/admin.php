@@ -11,6 +11,7 @@ Route::prefix('/admin')->group(function(){
     Route::post('/property/add', 'Admin\PropertyController@postPropertyAdd');
     Route::post('/property/{id}/edit', 'Admin\PropertyController@postPropertyEdit');
     Route::post('/property/{id}/gallery/add', 'Admin\PropertyController@postPropertyGalleryAdd');
+    Route::get('/property/{id}/gallery/{gid}/delete', 'Admin\PropertyController@getPropertyGalleryDelete');
     
 
     // Tipus de propietats (categories)

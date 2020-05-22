@@ -174,8 +174,19 @@
                     {!! Form::file('file_image', ['id' => 'property_file_image', 'accept' => 'image/*', 'style' => 'display: none;', 'required']) !!}
                     {!! Form::close() !!}
 
-                    <div class="thumb">
+                    <div class="btn-submit">
                         <a href="#" id="btn_property_file_image"><i class="fas fa-plus"></i></a>
+                    </div>
+
+                    <div class="thumbs mtop16">
+                        @foreach($p->getGallery as $img)
+                        <div class="thumb">
+                            <a href="{{ url('/admin/property/'.$p->id.'/gallery/'.$img->id.'/delete') }}" data-toggle="tooltip" data-placement="top" title="Eliminar">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                            <img src="{{ url('/uploads/'.$img->file_path.'/t_'.$img->file_name) }}">
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
