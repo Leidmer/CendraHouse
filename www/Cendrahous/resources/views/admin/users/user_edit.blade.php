@@ -30,15 +30,19 @@
                                 <span class="title"><i class="far fa-address-card"></i> Nom:</span>
                                 <span class="text">{{ $u->name }} {{ $u->lastname }}</span>
                                 <span class="title"><i class="fas fa-user-tie"></i> Estat de l'usuari:</span>
-                                <span class="text">{{ getUserStatusArrayKey($u->status) }}</span>
+                                <span class="text">{{ getUserStatusArray(null,$u->status) }}</span>
                                 <span class="title"><i class="far fa-envelope"></i> Correu electrònic:</span>
                                 <span class="text">{{ $u->email }}</span>
                                 <span class="title"><i class="far fa-calendar-alt"></i> Data de Registre:</span>
                                 <span class="text">{{ $u->created_at }}</span>
                                 <span class="title"><i class="fas fa-user-shield"></i> Rol de l'usuari:</span>
-                                <span class="text">{{ getRoleUserArrayKey($u->role) }}</span>
-
+                                <span class="text">{{ getRoleUserArray(null,$u->role) }}</span>
                             </div>
+                            @if($u->status == "100")
+                            <a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-success mtop16">Activar Usuari</a>
+                            @else
+                            <a href="{{ url('/admin/user/'.$u->id.'/banned') }}" class="btn btn-danger mtop16">Suspendre Usuari</a>
+                            @endif
                         </div>
                     </div>
                 </div>

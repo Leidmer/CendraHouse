@@ -6,6 +6,7 @@ Route::prefix('/admin')->group(function(){
     // Modul Usuaris, "falta /? de moment funciona..."
     Route::get('users/{status}', 'Admin\UserController@getUsers')->name('user_list');
     Route::get('/user/{id}/edit', 'Admin\UserController@getUserEdit')->name('user_edit');
+    Route::get('/user/{id}/banned', 'Admin\UserController@getUserBanned')->name('user_banned');
 
     // Modul Propietats
     Route::get('/properties', 'Admin\PropertyController@getHome')->name('properties');

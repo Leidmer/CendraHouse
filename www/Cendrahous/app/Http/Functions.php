@@ -11,12 +11,21 @@ function getModulesArray(){
 }
 
 //Per poder mostrar si es admin o no
-function getRoleUserArrayKey($id){
+function getRoleUserArray($mode, $id){
     $roles = ['0' => 'Usuari Normal', '1' => 'Administrador'];
-    return $roles[$id];
+    if(!is_null($mode)):
+        return $roles;
+    else:
+        return $roles[$id];
+    endif;
 }
 
-function getUserStatusArrayKey($id){
+function getUserStatusArray($mode, $id){
     $status = ['0' => 'Registrat', '1' => 'Confirmat', '100' => 'Banejat'];
-    return $status[$id];
+    if(!is_null($mode)):
+        return $status;
+    else:
+        return $status[$id];
+    endif;
+    
 }
