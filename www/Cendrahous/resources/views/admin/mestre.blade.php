@@ -32,13 +32,13 @@
         <div class="col2">
             <nav class="navbar navbar-expand-lg shadow">
                 <div class="collapse navbar-collapse">
-                    <div class="logo" style="display: block;width: 5%;">
-                        <img src="{{ url('static/images/logo.png') }}" class="img-fluid">
+                    <div class="logo" style="display: block; width: 2.5%;">
+                        <img src="{{ url('static/images/logo_transparent.png') }}" class="img-fluid">
                     </div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a href="{{ url('/admin') }}" class="nav-link">
-                                <i class="fas fa-home"></i> Inici
+                                <i class="fas fa-home" style="margin-left: 16px;"></i> Inici
                             </a>
                         </li>
                     </ul>
