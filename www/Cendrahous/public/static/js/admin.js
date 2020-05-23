@@ -31,3 +31,7 @@ function editor_init(field){
         ]
     });
 }
+
+$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })

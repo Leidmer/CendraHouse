@@ -13,7 +13,7 @@ class TypesController extends Controller
 {
     public function __Construct(){
         $this->middleware('auth');
-        $this->middleware('isadmin');
+        //$this->middleware('isadmin');
     }
 
     public function getHome($module){

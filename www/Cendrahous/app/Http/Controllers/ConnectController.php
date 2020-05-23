@@ -32,7 +32,7 @@ class ConnectController extends Controller
         else:
 
             if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], true)):
-                return redirect('/');
+                return redirect('/admin');
             else:
                 return back()->with('message', 'Correu electrònic o contrasenya erronis')->with('typealert', 'danger');
             endif;
@@ -86,6 +86,6 @@ class ConnectController extends Controller
 
     public function getLogout(){
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 }

@@ -13,7 +13,7 @@
 <body>
     
     @section('content')
-    hola mundo
+
     @show
 </body>
 </html>

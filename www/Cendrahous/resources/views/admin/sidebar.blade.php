@@ -20,7 +20,7 @@
     <div class="main">
         <ul>
             <li>
-                <a href="{{ url('/admin') }}" class="lk-dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="{{ url('/admin') }}" class="lk-dashboard"><i class="fas fa-home"></i> Inici</a>
             </li>
             <li>
                 <a href="{{ url('/admin/properties') }}" class="lk-properties lk-property_add lk-property-edit lk-property_gallery_add"><i class="fas fa-building"></i> Propietats</a>
