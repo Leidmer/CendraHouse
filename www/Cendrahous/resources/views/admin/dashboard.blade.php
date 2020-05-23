@@ -16,26 +16,6 @@
             <h2 class="title"><i class="fas fa-building"></i> Propietats</h2>
         </div>
 
-            <!-- Prova amb card
-            @foreach($properties as $p)
-            <div class="container">
-                <div class="row">
-                  <div class="col-sm">
-                    <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <a href="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}" data-fancybox="gallery">
-                            <img src="{{ url('/uploads/'.$p->file_path.'/t_'.$p->image) }}" width="64" >
-                        </a>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                  </div>
-                </div>
-              </div>
-              
-            @endforeach
-            -->
 
         <div class="inside">
 
@@ -49,7 +29,7 @@
                         <td>Tipus</td>
                         <td>Descripció</td>
                         <td>Preu</td>
-                        <td></td>
+                        <td>Contacta</td>
 
                     </tr>
                 </thead>
@@ -63,7 +43,82 @@
                         <td>{{ $p->cat->name }}</td>
                         <td>{!! html_entity_decode($p->content) !!}</td>
                         <td>{{ $p->price }} €</td>
-                        <td></td>
+                        <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                M'interessa!
+                              </button>
+
+                              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Formulari de contacte</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <style type="text/css">
+                                            .box{
+                                             width:400px;
+                                             margin:0 auto;
+                                             border:1px solid #ccc;
+                                            }
+                                            .has-error
+                                            {
+                                             border-color:#cc0000;
+                                             background-color:#ffff99;
+                                            }
+                                           </style>
+                                          </head>
+                                          <body>
+                                           <br />
+                                           <br />
+                                           <br />
+                                           <div class="container box">
+                                            <h3>Contacta</h3><br />
+                                            @if (count($errors) > 0)
+                                             <div class="alert alert-danger">
+                                              <button type="button" class="close" data-dismiss="alert">×</button>
+                                              <ul>
+                                               @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                               @endforeach
+                                              </ul>
+                                             </div>
+                                            @endif
+                                            @if ($message = Session::get('success'))
+                                            <div class="alert alert-success alert-block">
+                                             <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    <strong>{{ $message }}</strong>
+                                            </div>
+                                            @endif
+                                            <form method="post" action="{{url('sendemail/send')}}">
+                                             {{ csrf_field() }}
+                                             <div class="form-group">
+                                              <label>Introdueix el teu nom</label>
+                                              <input type="text" name="name" class="form-control" value="" />
+                                             </div>
+                                             <div class="form-group">
+                                             <div class="form-group">
+                                              <label>Introdueix el teu e-mail</label>
+                                              <textarea name="message" class="form-control"></textarea>
+                                             </div>
+                                             <div class="form-group">
+                                              <input type="submit" name="send" class="btn btn-info" value="Send" />
+                                             </div>
+                                            </form>
+                                            
+                                           </div>
+                                          </body>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </td>
                     </tr>
                     @endforeach
                     <tr>
@@ -77,3 +132,7 @@
     </div>
 </div>
 @endsection
+
+
+
+

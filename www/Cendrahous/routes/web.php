@@ -19,6 +19,10 @@ Route::get('/', function () {
 
 //Route d'autenticació
 
+Route::get('/sendemail', 'SendEmailController@index');
+Route::post('/sendemail/send', 'SendEmailController@send');
+
+
 Route::get('/login', 'ConnectController@getLogin')->name('login');
 Route::post('/login', 'ConnectController@postLogin')->name('login');
 Route::get('/register', 'ConnectController@getRegister')->name('register');
