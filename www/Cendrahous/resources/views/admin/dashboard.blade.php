@@ -12,13 +12,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="panel shadow">
-        <div class="header">
-            <h2 class="title"><i class="fas fa-building"></i> Propietats</h2>
-        </div>
-
-
         <div class="inside">
-
             <table class="table table-striped mtop16">
                 <thead>
                     <tr>

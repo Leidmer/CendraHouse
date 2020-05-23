@@ -28,7 +28,7 @@ class SendMail extends Mailable
      */
     public function build()
     {
-        return $this->from('sethei86239@gmail.com')->subject('Nova Consulta del client')->view('dynamic_email_template')->with('data', $this->data);
+        return $this->from('cendrahouse@gmail.com')->subject('Nova Consulta del client')->view('dynamic_email_template')->with('data', $this->data);
     }
 }
 
