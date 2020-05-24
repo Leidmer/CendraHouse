@@ -5,7 +5,7 @@
 @section('content')
 <div class="box box_login shadow">
     <div class="header">
-        <a href="{{ url ('/') }}">
+        <a href="{{ url ('/admin') }}">
             <img src="{{ url ('/static/images/logo.png') }}">
         </a>
     </div>
@@ -52,6 +52,7 @@
    <div class="footer mtop16">
     <a href="{{ url ('/register') }}">No tens un compte? Registra't</a>
     <a href="{{ url ('/recover') }}">Recuperar Contrasenya</a>
+    <a href="{{ url ('/terms') }}">Condicions d'ús</a>
 </div>
 </div>
 </div>

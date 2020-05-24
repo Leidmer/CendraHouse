@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/terms', function () {
+    return view('terms');
+});
+
 //Route d'autenticació
 
 Route::get('/sendemail', 'SendEmailController@index');

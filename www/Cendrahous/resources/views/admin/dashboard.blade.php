@@ -32,10 +32,12 @@
                     <tr @if($p->status == '0') class="table-danger" @endif>
                         <td width="128"><a href="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}" data-fancybox="gallery"><img src="{{ url('/uploads/'.$p->file_path.'/'.$p->image) }}" width="256" ></a></td>
                         <td>{{ $p->name }}</td>
-                        <td width="200">{{ $p->n_rooms }}</td>
-                        <td width="200">{{ $p->n_baths }}</td>
+                        <td width="128">{{ $p->n_rooms }}</td>
+                        <td width="128">{{ $p->n_baths }}</td>
                         <td>{{ $p->cat->name }}</td>
-                        <td>{!! html_entity_decode($p->content) !!}</td>
+                        <td width="348">
+                          {!! html_entity_decode($p->content) !!}
+                        </td>
                         <td>{{ $p->price }} €</td>
                         <td>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
