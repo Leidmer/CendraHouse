@@ -31,7 +31,7 @@
                                 <i class="far fa-keyboard"></i>
                             </span>
                           </div>
-                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) !!}
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@
                                 <i class="far fa-keyboard"></i>
                             </span>
                           </div>
-                        {!! Form::number('n_rooms', null, ['class' => 'form-control', 'min' => '0.00', 'step' => 'any']) !!}
+                        {!! Form::number('n_rooms', null, ['class' => 'form-control', 'min' => '0.00', 'step' => 'any', 'id' => 'n_rooms']) !!}
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                                 <i class="far fa-keyboard"></i>
                             </span>
                           </div>
-                        {!! Form::number('n_baths', null, ['class' => 'form-control', 'min' => '0.00', 'step' => 'any']) !!}
+                        {!! Form::number('n_baths', null, ['class' => 'form-control', 'min' => '0.00', 'step' => 'any', 'id' => 'n_baths']) !!}
                     </div>
                 </div>
 

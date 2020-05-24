@@ -17,7 +17,7 @@
     <div class="input-group-prepend">
         <div class="input-group-text"><i class="far fa-envelope-open"></i></div>
     </div>
-        {!! Form::email('email', null, ['class'=> 'form-control'])!!}
+        {!! Form::email('email', null, ['class'=> 'form-control', 'id' => 'email'])!!}
    </div>
 
    <label for="password" class="mtop16">Contrasenya:</label>
@@ -25,9 +25,9 @@
     <div class="input-group-prepend">
         <div class="input-group-text"><i class="fas fa-lock"></i></div>
     </div>
-        {!! Form::password('password', ['class'=> 'form-control'])!!}
+        {!! Form::password('password', ['class'=> 'form-control', 'id' => 'password'])!!}
    </div>
-   {!! Form::submit('Entrar', ['class' => 'btn btn-success mtop16'])!!}
+   {!! Form::submit('Entrar', ['class' => 'btn btn-success mtop16', 'id' => 'login'])!!}
    {!! Form::close() !!}
 
    @if(Session::has('message'))

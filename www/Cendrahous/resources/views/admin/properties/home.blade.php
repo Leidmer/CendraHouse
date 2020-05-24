@@ -18,7 +18,7 @@
         <div class="inside">
 
             <div class="btns">
-                <a href="{{ url('/admin/property/add') }}" class="btn btn-primary">
+                <a href="{{ url('/admin/property/add') }}" class="btn btn-primary" id="Afegir">
                     <i class="fas fa-plus"></i> Afegir Propietat
                 </a>    
             </div>

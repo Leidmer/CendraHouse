@@ -26,7 +26,7 @@
                                 <i class="far fa-keyboard"></i>
                             </span>
                           </div>
-                        {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'name']) !!}
                     </div>
 
                     <label for="module" class="mtop16">Mòdul:</label>
@@ -47,9 +47,9 @@
                                 <i class="far fa-keyboard"></i>
                             </span>
                           </div>
-                        {!! Form::text('icon', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('icon', null, ['class' => 'form-control', 'id' => 'icon']) !!}
                     </div>
-                    {!! Form::submit('Guardar', ['class' => 'btn btn-success mtop16']) !!}
+                    {!! Form::submit('Guardar', ['class' => 'btn btn-success mtop16', 'id' => 'save']) !!}
                     {!! Form::close() !!}
                 </div>
             </div>
