@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.gecko.driver","C:\\Users\\Sethei\\Desktop\\M05_Selenium\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver","C:\\Users\\Sethei\\Desktop\\CendraHouse\\Entorn de desenvolupament\\Selenium\\geckodriver.exe");
         //Test del login
         WebDriver driver = new FirefoxDriver();
         driver.get("http://cendrahouse.com/login");
