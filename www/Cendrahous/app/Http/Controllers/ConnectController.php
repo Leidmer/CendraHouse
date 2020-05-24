@@ -31,8 +31,12 @@ class ConnectController extends Controller
             return back()->withErrors($validator)->with('message', 'Correu electrònic o contrasenya erronis')->with('typealert', 'danger');
         else:
 
-            if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], true)):
-                return redirect('/admin');
+            if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')] , true)):
+                if(Auth::user()->status == "100"):
+                    return redirect('/logout');
+                else:
+                    return redirect('/admin');
+                endif;
             else:
                 return back()->with('message', 'Correu electrònic o contrasenya erronis')->with('typealert', 'danger');
             endif;
@@ -85,7 +89,13 @@ class ConnectController extends Controller
     }
 
     public function getLogout(){
+        $status = Auth::user()->status;
         Auth::logout();
-        return redirect('/login');
+        if($status == "100"):
+            return redirect('/login')->with('message', 'L´usuari ha estat suspès')->with('typealert', 'danger');
+        else:
+            return redirect('/admin');
+        endif;
+        
     }
 }
