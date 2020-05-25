@@ -17,6 +17,7 @@
 
         <div class="inside">
             <div class="row">
+                <a class="btn btn-primary" href="{{ route('usuaris_xml') }}" style="margin-left: 16px;"><i class="fas fa-file-download"></i> XML</a>
                 <a class="btn btn-primary" href="{{ route('api_users') }}" style="float: left; display: inline-block; margin-left: 16px;">{ } API Json Usuaris</a>
 
                     <div class="dropdown" style="margin-left: 16px">
