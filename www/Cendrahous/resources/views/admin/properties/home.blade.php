@@ -20,7 +20,8 @@
             <div class="btns">
                 <a href="{{ url('/admin/property/add') }}" class="btn btn-primary" id="Afegir">
                     <i class="fas fa-plus"></i> Afegir Propietat
-                </a>    
+                </a>
+                <a class="btn btn-primary" href="{{ route('api_properties') }}" style="float: left; display: inline-block; margin-right: 16px;">{ } API Json Propietats</a>
             </div>
 
             <table class="table table-striped mtop16">

@@ -27,5 +27,5 @@ Route::prefix('/admin')->group(function(){
 
     //Api
     Route::get('/users', 'ApiController@indexUsers')->name('api_users');
-    Route::get('/properties/json', 'ApiController@indexProducts')->name('api_properties');
+    Route::get('/properties/json', 'ApiController@indexProperties')->name('api_properties');
 });
