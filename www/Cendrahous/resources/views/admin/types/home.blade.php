@@ -6,6 +6,7 @@
 <li class="breadcrumb-item">
     <a href="{{ url('/admin/types') }}"><i class="far fa-folder-open"></i> Tipus de propietats</a>
 </li>
+
 @endsection
 
 @section('content')
@@ -66,6 +67,7 @@
                         @foreach(getModulesArray() as $m => $k)
                         <a class="nav-link" href="{{ url('/admin/types/'.$m) }}"><i class="fas fa-list"></i> {{ $k }}</a>
                         @endforeach
+                        <a class="btn btn-primary" href="{{ route('types_xml') }}" style="margin-left: 16px; float: right;"><i class="fas fa-file-download"></i> XML</a>
                     </nav>
                     <table class="table mtop16">
                         <thead>

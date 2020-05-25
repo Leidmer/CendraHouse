@@ -28,7 +28,7 @@ class XMLController extends Controller
 	    $xml->endDocument();
 	    $filename = date('Y-m-d');
         header("Content-Type: text/html/force-download");
-        header("Content-Disposition: attachment; filename=".$filename.".xml");
+        header("Content-Disposition: attachment; filename=".$filename.'_User_'.$user->name.".xml");
 
     $content = $xml->outputMemory();
 	$xml = null;
@@ -59,7 +59,34 @@ class XMLController extends Controller
 	    $xml->endDocument();
 	    $filename = date('Y-m-d');
         header("Content-Type: text/html/force-download");
-        header("Content-Disposition: attachment; filename=".$filename.".xml");
+        header("Content-Disposition: attachment; filename=".$filename.'_Property_'.$property->slug.".xml");
+
+    $content = $xml->outputMemory();
+    $xml = null;
+
+    return response($content)->header('Content-Type', 'text/xml');
+    }
+
+    public function download_type(){
+        $types = Property::all();
+	    $xml = new \XMLWriter();
+        $xml->openMemory();
+        $xml->startDocument();
+        $xml->startElement('Types');
+            foreach($types as $type) {
+                $xml->startElement('type');
+                $xml->writeElement('id', $type->id);
+                $xml->writeElement('module', $type->module);
+                $xml->writeElement('name', $type->name);
+                $xml->writeElement('slug', $type->slug);
+                $xml->writeElement('icon', $type->icona);
+                $xml->endElement();
+            }
+        $xml->endElement();
+	    $xml->endDocument();
+	    $filename = date('Y-m-d');
+        header("Content-Type: text/html/force-download");
+        header("Content-Disposition: attachment; filename=".$filename.'_Type_'.$type->slug.".xml");
 
     $content = $xml->outputMemory();
     $xml = null;
