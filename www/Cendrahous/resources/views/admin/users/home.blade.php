@@ -17,8 +17,9 @@
 
         <div class="inside">
             <div class="row">
-                <div class="col-md-2 offset-md-10">
-                    <div class="dropdown">
+                <a class="btn btn-primary" href="{{ route('api_users') }}" style="float: left; display: inline-block; margin-left: 16px;">{ } API Json Usuaris</a>
+
+                    <div class="dropdown" style="margin-left: 16px">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100%;">
                             <i class="fas fa-filter"></i> Filtrar
                           </button>
@@ -28,7 +29,6 @@
                             <a class="dropdown-item" href="{{ url('/admin/users/1') }}"><i class="fas fa-user-check"></i> Confirmats</a>
                             <a class="dropdown-item" href="{{ url('/admin/users/100') }}"><i class="fas fa-heart-broken"></i> Suspesos</a>
                           </div>
-                    </div>
                 </div>
             </div>
             <table class="table mtop16">

@@ -48,6 +48,7 @@
                 </div>
             </div>
 
+            <!--Formulari editar usuari
             <div class="col-md-8">
                 <div class="panel shadow">
                     <div class="header">
@@ -59,6 +60,7 @@
                     </div>
                 </div>
             </div>
+            -->
         </div>
 </div>
     
