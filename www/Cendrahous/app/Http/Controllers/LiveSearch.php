@@ -12,6 +12,11 @@ class LiveSearch extends Controller
      return view('live_search');
     }
 
+    public function __Construct(){
+      $this->middleware('auth');
+      $this->middleware('isadmin');
+  }
+
     function action(Request $request)
     {
      if($request->ajax())

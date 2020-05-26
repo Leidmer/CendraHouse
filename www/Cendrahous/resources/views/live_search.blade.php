@@ -10,11 +10,6 @@
 
 @section('content')
 
-<!DOCTYPE html>
-<html>
- <head>
-  <title>Buscador de Propietats</title>
- </head>
  <body>
   <br />
   <div class="mtop16" style="margin-left: 16px; margin-right: 16px; padding: 16px;">
@@ -47,7 +42,6 @@
    </div>
 </div>
  </body>
-</html>
 
 <script>
 $(document).ready(function(){

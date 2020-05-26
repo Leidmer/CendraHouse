@@ -8,6 +8,12 @@ use App\User, App\Http\Models\Property;
 
 class XMLController extends Controller
 {
+
+    public function __Construct(){
+        $this->middleware('auth');
+        $this->middleware('isadmin');
+    }
+    
       public function download_user(){
         $users = User::all();
 	    $xml = new \XMLWriter();

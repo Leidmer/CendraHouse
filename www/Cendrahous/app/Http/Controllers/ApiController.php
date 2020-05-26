@@ -7,6 +7,12 @@ use App\Http\Models\Property, App\User;
 
 class ApiController extends Controller
 {
+
+    public function __Construct(){
+        $this->middleware('auth');
+        $this->middleware('isadmin');
+    }
+    
     public function indexUsers(){
         return response()->json(User::all());
     }

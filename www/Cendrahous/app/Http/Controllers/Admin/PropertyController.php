@@ -15,6 +15,7 @@ class PropertyController extends Controller
 {
     public function __Construct(){
         $this->middleware('auth');
+        //Amb aquest middleware sino es admin no podrà accedir
         $this->middleware('isadmin');
     }
 
