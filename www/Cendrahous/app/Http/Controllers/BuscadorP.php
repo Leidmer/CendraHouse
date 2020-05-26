@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB, \Admin\PropertyController;
 
-class LiveSearch extends Controller
+class BuscadorP extends Controller
 {
     function index()
     {
-     return view('live_search');
+     return view('BuscadorPropietats');
     }
 
     public function __Construct(){

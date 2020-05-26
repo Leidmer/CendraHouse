@@ -35,6 +35,6 @@ Route::prefix('/admin')->group(function(){
     Route::get('/users', 'ApiController@indexUsers')->name('api_users');
     Route::get('/properties/json', 'ApiController@indexProperties')->name('api_properties');
 
-    Route::get('/live_search', 'LiveSearch@index')->name('live_search');
-    Route::get('/live_search/action', 'LiveSearch@action')->name('live_search.action');
+    Route::get('/BuscadorPropietats', 'BuscadorP@index')->name('BuscadorPropietats');
+    Route::get('/BuscadorPropietats/action', 'BuscadorP@action')->name('BuscadorPropietats.action');
 });

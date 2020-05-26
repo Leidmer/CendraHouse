@@ -51,7 +51,7 @@ $(document).ready(function(){
  function fetch_customer_data(query = '')
  {
   $.ajax({
-   url:"{{ route('live_search.action') }}",
+   url:"{{ route('BuscadorPropietats.action') }}",
    method:'GET',
    data:{query:query},
    dataType:'json',
