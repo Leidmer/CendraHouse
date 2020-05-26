@@ -2,6 +2,7 @@
 
 @section('title', 'Propietats en Venda')
 
+
 @section('breadcrumb')
 <li class="breadcrumb-item">
     <a href="{{ url('/admin') }}"><i class="fas fa-building"></i> Propietats en Venda</a>
@@ -117,6 +118,7 @@
                         </td>
                     </tr>
                     @endforeach
+                    
                     <tr>
                         <td colspan="8">
                             {!! $properties->render() !!}
@@ -127,6 +129,8 @@
         </div>
     </div>
 </div>
+
+
 @endsection
 
 

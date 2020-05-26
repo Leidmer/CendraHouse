@@ -18,11 +18,11 @@
         <div class="inside">
 
             <div class="btns">
-                <a href="{{ url('/admin/property/add') }}" class="btn btn-primary" id="Afegir">
-                    <i class="fas fa-plus"></i> Afegir Propietat
-                </a>
+                <a class="btn btn-primary" href="{{ url('/admin/live_search') }}" style="float: left; display: inline-block; margin-right: 16px;"><i class="fas fa-search"></i> Buscador</a>
+                <a href="{{ url('/admin/property/add') }}" class="btn btn-primary" id="Afegir"><i class="fas fa-plus"></i> Afegir Propietat</a>
                 <a class="btn btn-primary" href="{{ route('properties_xml') }}" style="margin-left: 16px;"><i class="fas fa-file-download"></i> XML</a>
                 <a class="btn btn-primary" href="{{ route('api_properties') }}" style="float: left; display: inline-block; margin-right: 16px;">{ } API Json Propietats</a>
+
             </div>
 
             <table class="table table-striped mtop16">
