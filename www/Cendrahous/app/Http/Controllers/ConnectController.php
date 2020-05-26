@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Validator, Hash, Auth;
+use Validator, Hash, Auth, Mail;
+use App\Mail\UserSendRecover;
 use App\User;
 
 class ConnectController extends Controller
@@ -101,5 +102,50 @@ class ConnectController extends Controller
             return redirect('/admin');
         endif;
         
+    }
+
+    public function getRecover(){
+        return view('connect.recover');
+    }
+
+    public function postRecover(Request $request){
+        $rules = [
+            'email' => 'required|email'
+        ];
+
+        $messages = [
+            
+            'email.required' => 'El correo electrònic és obligatori',
+            'email.email' => 'Introdueix un format de correu vàlid',
+           
+            
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if($validator->fails()):
+            return back()->withErrors($validator)->with('message', 'S´ha produit un error')->with('typealert', 'danger');
+        else:
+            $user = User::where('email', $request->input('email'))->count();
+            if($user == '1'):
+                $user = User::where('email', $request->input('email'))->first();
+                $code = rand(100000, 999999);
+                $data = ['name' => $user->name, 'email' => $user->email, 'code' => $code];
+                $u = User::find($user->id);
+                $u->password_code = $code;
+                if($u->save()):
+                Mail::to($user->email)->send(new UserSendRecover($data));
+                return redirect('/reset?email='.$user->email)->with('message', 'Introdueixi el codi que li hem enviat per correu electrònic.')->with('typealert', 'succes');;
+                endif;
+            else:
+                return back()->with('message', 'Aquest correu no existeix.')->with('typealert', 'danger');
+            endif;
+
+            
+        endif;
+    }
+
+    public function getReset(Request $request){
+        $data = ['email' => $request->get('email')];
+        return view('connect.reset', $data);
     }
 }
