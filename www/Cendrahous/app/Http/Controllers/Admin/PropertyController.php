@@ -52,6 +52,7 @@ class PropertyController extends Controller
             'content.required' => 'La descripció és obligatòria'
         ];
 
+
         $validator = Validator::make($request->all(), $rules, $messages);
         if($validator->fails()):
             return back()->withErrors($validator)->with('message', 'S´ha produit un error')->with('typealert', 'danger')->withInput();
@@ -170,6 +171,13 @@ class PropertyController extends Controller
                 endif;
                 return back()->with('message', 'S´ha actualitzat correctament')->with('typealert', 'success');
             endif;
+        endif;
+    }
+
+    public function getPropertyDelete($id){
+        $p = Property::find($id);
+        if($p->delete()):
+            return back()->with('message', 'S´ha eliminat correctament')->with('typealert', 'success');
         endif;
     }
 

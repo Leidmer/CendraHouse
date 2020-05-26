@@ -16,6 +16,7 @@ Route::prefix('/admin')->group(function(){
     Route::get('/property/{id}/edit', 'Admin\PropertyController@getPropertyEdit')->name('property_edit');
     Route::post('/property/add', 'Admin\PropertyController@postPropertyAdd')->name('property_add');
     Route::post('/property/{id}/edit', 'Admin\PropertyController@postPropertyEdit')->name('property_edit');
+    Route::get('/property/{id}/delete', 'Admin\PropertyController@getPropertyDelete')->name('property_delete');
     Route::post('/property/{id}/gallery/add', 'Admin\PropertyController@postPropertyGalleryAdd')->name('property_gallery_add');
     Route::get('/property/{id}/gallery/{gid}/delete', 'Admin\PropertyController@getPropertyGalleryDelete')->name('product_gallery_delete');
     //Exportar dades Propietats en XML

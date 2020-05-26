@@ -25,12 +25,14 @@ class UserController extends Controller
         return view('admin.users.home', $data);
     }
 
+    //Per editar l'usuari
     public function getUserEdit($id){
         $u = User::findOrFail($id);
         $data = ['u' => $u];
         return view('admin.users.user_edit', $data);
     }
 
+    //Si l'status de l'usuari es 1 está confirmat i activat, per tant es pot fer servir, però si és 100 està banejat i no pot fer login
     public function getUserBanned($id){
         $u = User::findOrFail($id);
         if($u->status == "100"):
