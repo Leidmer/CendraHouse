@@ -35,7 +35,11 @@ class ConnectController extends Controller
                 if(Auth::user()->status == "100"):
                     return redirect('/logout');
                 else:
+                    if(Auth::user()->role == "0"):
                     return redirect('/admin');
+                    else:
+                    return redirect('/admin/properties');
+                    endif;
                 endif;
             else:
                 return back()->with('message', 'Correu electrònic o contrasenya erronis')->with('typealert', 'danger');

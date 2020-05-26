@@ -14,9 +14,10 @@ class UserController extends Controller
         $this->middleware('isadmin');
     }
 
+    //Per mostrar els usuaris ordenats per ID amb un maxim de 25, si hi han 26 surt per poder canviar de pagina
     public function getUsers($status){
         if($status == 'all'):
-            $users = User::orderBy('id', 'Desc')->paginate(25);
+            $users = User::orderBy('id', 'Desc')->paginate(5);
         else:
             $users = User::where('status', $status)->orderBy('id', 'Desc')->paginate(25);
         endif;

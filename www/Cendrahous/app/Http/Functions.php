@@ -4,7 +4,7 @@ function getModulesArray(){
     $a = [
         '0' => 'Propietats',
         '1' => 'Blog'
-        //'2' => 'Prova'
+        //Aqui es poden afegir més moduls per si alguna vegada es volgues afegir uns tipus que no siguin propietats, d'aquesta forma estan ordenats en 2 super categories
     ];
 
     return $a;

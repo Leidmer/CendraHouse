@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function(){
             document.getElementById('form_property_gallery').submit();
     });
     }
-    route_active = document.getElementsByClassName('lk-'+route)[0].classList.add('active')
+    route_active = document.getElementsByClassName('lk-'+route)[0].classList.add('active');
 });
 
 //EDITOR CKEDITOR
@@ -32,6 +32,7 @@ function editor_init(field){
     });
 }
 
+//MODAL
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
   })
