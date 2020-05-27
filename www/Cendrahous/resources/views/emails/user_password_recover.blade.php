@@ -7,3 +7,5 @@
 <p>Si el botó no funciona, copia la següent URL en el seu navegador: </p>
 <p>{{ url('/reset?email='.$email) }}</p>
 @stop
+
+
