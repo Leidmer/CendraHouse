@@ -69,7 +69,7 @@ class PropertyController extends Controller
 
             $property = new Property;
             //Si la propietat està posada en 0 és un borrador i si es 1 està publicada
-            $property->status = '0';
+            $property->status = '1';
             $property->name = e($request->input('name'));
             $property->slug = Str::slug($request->input('name'));
             $property->n_rooms = $request->input('n_rooms');
