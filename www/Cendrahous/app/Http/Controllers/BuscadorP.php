@@ -63,7 +63,7 @@ class BuscadorP extends Controller
       {
        $output = '
        <tr>
-        <td align="center" colspan="5">No Data Found</td>
+        <td align="center" colspan="5">No s`ha trobat cap resultat</td>
        </tr>
        ';
       }
